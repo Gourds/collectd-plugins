@@ -1,0 +1,23 @@
+# Configure the redis_info-collectd-plugin
+<LoadPlugin python>
+  Globals true
+</LoadPlugin>
+
+<Plugin python>
+  ModulePath "/usr/lib64/collectd/plugins/"
+  Import "pika_info"
+
+  <Module pika_info>
+    Host "192.168.1.1"
+    Port 9221
+    # Un-comment to use AUTH
+    Auth "xxxxxxxxxx"
+    #Verbose true
+    #Catch Redis metrics (prefix with Redis_)
+    Instance "pika"
+    connected_clients "GAUGE"
+    total_commands_processed "COUNTER"
+    used_cpu_user "COUNTER"
+    instantaneous_ops_per_sec "COUNTER"
+  </Module>
+</Plugin>
