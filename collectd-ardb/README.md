@@ -1,2 +1,4 @@
 
 ### USAGE
+
+pip install redis
